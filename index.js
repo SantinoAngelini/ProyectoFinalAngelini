@@ -32,6 +32,8 @@ const cantJuego5 = 1;
 
 alert("Hola " + nombreUsuario + ", este es el catalogo del dia de hoy ");
 
+
+//Bucle el cual permite seleccionar los juegos deseados y agregarlos al carrito
 while (opcion !== "6") {
     opcion = prompt ("Catalogo de hoy:\n1) Mortal kombat 11\n2) Dark souls 3\n3) Elden ring\n4) Little nightmares\n5) God of war: Ragnarok\n6) Ver Carrito");
 
@@ -96,6 +98,7 @@ while (opcion !== "6") {
     }
 }
 
+//Muestra la suma total de todos los juegos seleccionados en el carrito
 const totalCarrito = (opcionJuego1 * juego1) + (opcionJuego2 * juego2) + (opcionJuego3 * juego3) + (opcionJuego4 * juego4) + (opcionJuego5 * juego5);
 alert("El total del carrito es: $" + totalCarrito);
 alert("¡Muchas gracias por su compra!")
