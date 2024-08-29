@@ -1,0 +1,148 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: url('/img/gabenewell.jpg'); 
+    background-size:cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: rgba(51, 51, 51, 0.976);
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    color: white;
+}
+
+
+
+main {
+    padding: 20px;
+    height: 90vh;
+    box-sizing: border-box; 
+    background-color: rgba(51, 51, 51, 0.8);
+    border: 1px solid white;
+    border-radius: 30px;
+    margin-top: 15px;
+}
+
+footer {
+    background-color: rgba(51, 51, 51, 0.976);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#usuarioSection {
+    text-align: center;
+    margin-top: 50px;
+    color: white;
+    
+}
+
+#usuarioInput {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#ingresarUsuario {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+}
+
+#ingresarUsuario:hover {
+    background-color: #218838;
+}
+
+#catalogoSection {
+    margin-top: 20px;
+}
+
+#catalogoSection h2 {
+    color: white;
+}
+
+#catalogoLista {
+    list-style-type: none;
+    padding: 0;
+    color: white;
+}
+
+#catalogoLista li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#catalogoLista input[type="number"] {
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 80px;
+}
+
+#catalogoSection button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #c6cc24;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#catalogoSection button:hover {
+    background-color: #887200;
+}
+
+#carritoSection {
+    margin-top: 20px;
+    color: white;}
+
+#carritoLista {
+    list-style-type: none;
+    padding: 0;
+}
+
+#carritoLista li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#carritoSection button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #c6cc24;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#carritoSection button:hover {
+    background-color: #887200;
+}
+
+#totalCarrito {
+    font-weight: bold;
+    margin-top: 20px;
+}
