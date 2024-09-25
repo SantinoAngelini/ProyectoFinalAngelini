@@ -1,29 +1,63 @@
 class Juego {
-    constructor(nombre, precio, cantidad) {
+    constructor(nombre, precio, cantidad, imagen) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.imagen = imagen; 
     }
 }
 
-const juegos = [
-    new Juego("Mortal Kombat 11", 27000, 3),
-    new Juego("Dark Souls 3", 13000, 2),
-    new Juego("Elden Ring", 60000, 6),
-    new Juego("Little Nightmares", 8700, 9),
-    new Juego("God of War: Ragnarok", 43000, 1)
-];
+let juegos = [];
+
+function cargarJuegos() {
+    return fetch('/juegos.json') 
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al cargar los juegos.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            
+            juegos = data.map(juego => new Juego(juego.nombre, juego.precio, juego.cantidad, juego.imagen));
+            mostrarCatalogo(); 
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+
 
 function mostrarCatalogo() {
     const catalogoLista = document.getElementById('catalogoLista');
-    catalogoLista.innerHTML = '';
+    catalogoLista.innerHTML = ''; 
+
     juegos.forEach((juego, index) => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            ${index + 1}) ${juego.nombre} - $${juego.precio} (Cantidad disponible: ${juego.cantidad})
-            <input type="number" id="cantidad${index}" min="1" max="${juego.cantidad}" placeholder="Cantidad" />
+        
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        card.innerHTML = `
+            <img src="${juego.imagen}" alt="${juego.nombre}" style="width: 100%; height: auto; border-radius: 10px;">
+            <h3>${juego.nombre}</h3>
+            <p>Precio: $${juego.precio}</p>
+            <p>Stock disponible: ${juego.cantidad}</p>
+            <input type="number" id="cantidad${index}" min="1" max="${juego.cantidad}" placeholder="Cantidad">
             <button onclick="agregarAlCarrito(${index})">Agregar al Carrito</button>
         `;
-        catalogoLista.appendChild(li);
+
+        catalogoLista.appendChild(card);
     });
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('usuario')) {
+        document.getElementById('usuarioSection').style.display = 'none';
+        document.getElementById('catalogoSection').style.display = 'block';
+        cargarJuegos(); 
+    }
+});

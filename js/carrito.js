@@ -7,7 +7,7 @@ function agregarAlCarrito(index) {
 
     if (cantidad && cantidad > 0) {
         if (cantidad > juego.cantidad) {
-            alert("La cantidad seleccionada no está disponible");
+            swal("Error", "La cantidad seleccionada no está disponible", "error");
         } else {
             const itemEnCarrito = carrito.find(item => item.juego === juego);
             if (itemEnCarrito) {
@@ -16,17 +16,18 @@ function agregarAlCarrito(index) {
                 carrito.push({ juego, cantidad });
             }
             localStorage.setItem('carrito', JSON.stringify(carrito));
-            alert("¡Su juego se agregó al carrito!");
+            swal("¡Agregado!", "¡Su juego se añadio al carrito!", "success");
         }
     } else {
-        alert("Por favor, ingrese una cantidad válida.");
+        swal("Error", "Por favor, ingrese una cantidad válida.", "error");
     }
 }
+
 
 function mostrarCarrito() {
     const carritoLista = document.getElementById('carritoLista');
     const totalCarrito = document.getElementById('totalCarrito');
-    carritoLista.innerHTML = '';
+    carritoLista.innerHTML = ''; 
     let total = 0;
 
     carrito.forEach((item, index) => {
@@ -42,22 +43,19 @@ function mostrarCarrito() {
     totalCarrito.innerHTML = `Total: $${total}`;
 }
 
+
 function eliminarDelCarrito(index) {
     carrito.splice(index, 1);
     localStorage.setItem('carrito', JSON.stringify(carrito));
     mostrarCarrito();
 }
 
-document.getElementById('verCarrito').addEventListener('click', () => {
-    document.getElementById('catalogoSection').style.display = 'none';
-    document.getElementById('carritoSection').style.display = 'block';
-    mostrarCarrito();
-});
+
 
 document.getElementById('finalizarCompra').addEventListener('click', () => {
     localStorage.removeItem('carrito');
     carrito = [];
-    alert("¡Muchas gracias por su compra!");
+    swal("¡Felicitaciones!", "¡Su compra fue exitosa!", "success");
     document.getElementById('carritoSection').style.display = 'none';
     document.getElementById('catalogoSection').style.display = 'block';
     mostrarCatalogo();
